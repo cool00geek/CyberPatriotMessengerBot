@@ -10,7 +10,32 @@ import java.util.Set;
  */
 class DataVerify {
     static void refreshData(HashMap<Integer, int[][]> teams){
-
+        WebDriver driver = new ChromeDriver();
+        /*driver.get("https://scoreboard.uscyberpatriot.org/");
+        HashMap<Integer, int[]> currScores = new HashMap<Integer, int[]>();
+        List<WebElement> rows = driver.findElements(By.xpath("/html/body/div[2]/div/table/tbody/tr"));
+        for (WebElement row : rows) {
+            WebElement team = row.findElement(By.XPath("./td[0]"));
+            WebElement score = row.findElement(By.XPath("./td[6]"));
+            String teamStr = team.getText();
+            int tn = Integer.parseInt(teamStr.substring(3));
+            int currScore = Intger.parseInt(score.getText());
+            currScores.put(tn, new int[] {currScore});
+        }
+        */
+        
+        Set<Integer> teamIds = teams.keySet();
+        for (Integer teamNum : teamIds)
+        {
+            driver.get("http://scoreboard.uscyberpatriot.org/team.php?team=10-" + teamNum):
+            List<WebElement> rows = driver.findElements(By.xpath("/html/body/div[2]/div/table[2]/tbody/tr"));
+            int[][] currTeamInfo = teams.get(teamNum);
+            currTeamInfo[1][1] = Integer.parseInt(rows.get(1).findElement(By.XPath("./td[5]")));
+            currTeamInfo[1][2] = Integer.parseInt(rows.get(2).findElement(By.XPath("./td[5]")));
+            currTeamInfo[1][3] = Integer.parseInt(rows.get(3).findElement(By.XPath("./td[5]")));
+            currTeamInfo[1][0] = currTeamInfo[1][1] + currTeamInfo[1][2] + currTeamInfo[1][3];
+            teams.put(teamNum, currTeamInfo);
+        }
     }
 
     static void checkForChange(int channel, HashMap<Integer, int[][]> teams) throws IOException {
