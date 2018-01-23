@@ -9,26 +9,19 @@ import java.util.Set;
  * Licensed under the GNU/GPL v3 public license
  */
 class DataVerify {
-    static void refreshData(HashMap<Integer, int[][]> teams){
-        WebDriver driver = new ChromeDriver();
-        /*driver.get("https://scoreboard.uscyberpatriot.org/");
-        HashMap<Integer, int[]> currScores = new HashMap<Integer, int[]>();
-        List<WebElement> rows = driver.findElements(By.xpath("/html/body/div[2]/div/table/tbody/tr"));
-        for (WebElement row : rows) {
-            WebElement team = row.findElement(By.XPath("./td[0]"));
-            WebElement score = row.findElement(By.XPath("./td[6]"));
-            String teamStr = team.getText();
-            int tn = Integer.parseInt(teamStr.substring(3));
-            int currScore = Intger.parseInt(score.getText());
-            currScores.put(tn, new int[] {currScore});
-        }
-        */
-        
+    private WebDriver myDriver;
+
+    public DataVerify()
+    {
+        myDriver = new ChromeDriver();
+    }
+
+    void refreshData(HashMap<Integer, int[][]> teams){
         Set<Integer> teamIds = teams.keySet();
         for (Integer teamNum : teamIds)
         {
-            driver.get("http://scoreboard.uscyberpatriot.org/team.php?team=10-" + teamNum):
-            List<WebElement> rows = driver.findElements(By.xpath("/html/body/div[2]/div/table[2]/tbody/tr"));
+            myDriver.get("http://scoreboard.uscyberpatriot.org/team.php?team=10-" + teamNum):
+            List<WebElement> rows = myDriver.findElements(By.xpath("/html/body/div[2]/div/table[2]/tbody/tr"));
             int[][] currTeamInfo = teams.get(teamNum);
             currTeamInfo[1][1] = Integer.parseInt(rows.get(1).findElement(By.XPath("./td[5]")));
             currTeamInfo[1][2] = Integer.parseInt(rows.get(2).findElement(By.XPath("./td[5]")));
@@ -38,7 +31,7 @@ class DataVerify {
         }
     }
 
-    static void checkForChange(int channel, HashMap<Integer, int[][]> teams) throws IOException {
+    void checkForChange(int channel, HashMap<Integer, int[][]> teams) throws IOException {
         Set<Integer> teamIds = teams.keySet();
 
         for (Integer teamNum : teamIds) {
@@ -56,12 +49,12 @@ class DataVerify {
             }
             if (teamScore[0][2] != teamScore[1][2]) {
                 hasChanged = true;
-                toSend += "Windows 10: " + teamScore[0][2] + " -> " + teamScore[1][2] + "\n";
+                toSend += "Ubuntu 14.04: " + teamScore[0][2] + " -> " + teamScore[1][2] + "\n";
                 teamScore[0][2] = teamScore[1][2];
             }
             if (teamScore[0][3] != teamScore[1][3]) {
                 hasChanged = true;
-                toSend += "Ubuntu 14.04: " + teamScore[0][3] + " -> " + teamScore[1][3] + "\n";
+                toSend += "Windows 10: " + teamScore[0][3] + " -> " + teamScore[1][3] + "\n";
                 teamScore[0][3] = teamScore[1][3];
             }
             if (hasChanged) {

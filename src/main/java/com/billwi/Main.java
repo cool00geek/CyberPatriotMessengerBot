@@ -14,6 +14,8 @@ public class Main {
     private final static int REFRESH_TIMEOUT = 60;
 
     public static void main(String[] args) throws IOException {
+        DataVerify verify = new DataVerify();
+
         HashMap<Integer, int[][]> randomTeams = new HashMap<>();
         for(String team : args){
             int teamNum = 0;
@@ -46,14 +48,14 @@ public class Main {
                 System.out.println("Timer created!");
                 try {
                     System.out.println("Refreshing data");
-                    DataVerify.refreshData(randomTeams);
-                    DataVerify.refreshData(favTeams);
-                    DataVerify.refreshData(schoolTeams);
-                    DataVerify.refreshData(generalTeams);
-                    DataVerify.checkForChange(0, randomTeams);
-                    DataVerify.checkForChange(1, favTeams);
-                    DataVerify.checkForChange(2, schoolTeams);
-                    DataVerify.checkForChange(3, generalTeams);
+                    verify.refreshData(randomTeams);
+                    verify.refreshData(favTeams);
+                    verify.refreshData(schoolTeams);
+                    verify.refreshData(generalTeams);
+                    verify.checkForChange(0, randomTeams);
+                    verify.checkForChange(1, favTeams);
+                    verify.checkForChange(2, schoolTeams);
+                    verify.checkForChange(3, generalTeams);
                 } catch (IOException ex) { // Catch the exception from the database conn
                     System.out.println(ex);
                 }
