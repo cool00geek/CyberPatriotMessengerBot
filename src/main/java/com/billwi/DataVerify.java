@@ -52,9 +52,6 @@ class DataVerify {
 
         }
     }
-
-
-
     void checkForChange(int channel, HashMap<Integer, int[][]> teams) throws IOException {
         Set<Integer> teamIds = teams.keySet();
 
