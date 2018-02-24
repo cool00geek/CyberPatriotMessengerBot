@@ -1,4 +1,4 @@
-package com.billwi;
+package com.cool00geek;
 
 
 import java.io.*;
@@ -6,7 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by @billwi on 12/31/17.
+ * Created by @cool00geek on 12/31/17.
  * Licensed under the GNU/GPL v3 public license
  */
 class SlackBot {

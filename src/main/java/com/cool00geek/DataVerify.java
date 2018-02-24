@@ -1,4 +1,4 @@
-package com.billwi;
+package com.cool00geek;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 /**
- * Created by @billwi on 12/31/17.
+ * Created by @cool00geek on 12/31/17.
  * Licensed under the GNU/GPL v3 public license
  */
 class DataVerify {

@@ -1,4 +1,4 @@
-package com.billwi;
+package com.cool00geek;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by @billwi
+ * Created by @cool00geek
  * Licensed under the GNU/GPL v3 public license
  */
 public class Main {
